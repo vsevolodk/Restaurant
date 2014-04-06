@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getPassword">
+    <complexType>
+     <sequence>
+      <element name="nameCustomer" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPasswordResponse">
+    <complexType>
+     <sequence>
+      <element name="getPasswordReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getPasswordResponse">
+
+      <wsdl:part element="impl:getPasswordResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPasswordRequest">
+
+      <wsdl:part element="impl:getPassword" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerWebService">
+
+      <wsdl:operation name="getPassword">
+
+         <wsdl:input message="impl:getPasswordRequest" name="getPasswordRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPasswordResponse" name="getPasswordResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerWebServiceSoapBinding" type="impl:CustomerWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getPassword">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPasswordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPasswordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerWebServiceService">
+
+      <wsdl:port binding="impl:CustomerWebServiceSoapBinding" name="CustomerWebService">
+
+         <wsdlsoap:address location="http://localhost:8080/Restaurant/services/CustomerWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
